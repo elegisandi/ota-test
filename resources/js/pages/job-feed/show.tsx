@@ -13,7 +13,7 @@ export default function JobDetailsPage({ job }: JobDetailsProps) {
                 <main className="mx-auto w-full max-w-3xl flex-1 p-6">
                     <div className="rounded-xl border border-gray-200 bg-white p-8 shadow-sm">
                         <div className="mb-6 flex items-start justify-between gap-6">
-                            <h2 className="text-3xl font-semibold text-blue-900">{job.title}</h2>
+                            <h1 className="text-3xl font-semibold text-blue-900">{job.title}</h1>
                             <Button variant="link" className="dark:text-secondary gap-1" asChild>
                                 <Link href="/">
                                     <UndoIcon size={16} />

@@ -2,7 +2,6 @@
 
 namespace App\Services;
 
-use function Psy\debug;
 use Illuminate\Support\Str;
 use App\Enums\EmploymentType;
 use Illuminate\Support\Carbon;
@@ -32,7 +31,7 @@ final class MrgeJobFeedService implements ExternalJobFeedInterface
                 $description = array_reduce($description, function ($carry, $desc) {
 
                     $html = <<<HTML
-                    <h2>{$desc['name']}</h2>
+                    <h3 class="text-xl mb-2">{$desc['name']}</h3>
                     {$desc['value']}
                     HTML;
 
@@ -42,7 +41,8 @@ final class MrgeJobFeedService implements ExternalJobFeedInterface
 
             $temp_employmentType = Str::of($item['schedule'] ?? 'NA')
                 ->lower()
-                ->replace([' ', '-'], '');
+                ->replace([' ', '-'], '')
+                ->toString();
 
             $employmentType = match ($temp_employmentType) {
                 'fulltime', => EmploymentType::FULL_TIME,
@@ -58,7 +58,7 @@ final class MrgeJobFeedService implements ExternalJobFeedInterface
                 'uuid' => self::UUID_PREFIX . $item['id'],
                 'title' => $item['name'],
                 'description' => $description,
-                'location' => $item['location'] ?? 'NA',
+                'location' => $item['office'] ?? 'NA',
                 'employmentType' => $employmentType,
                 'companyName' => $item['subcompany'] ?? 'NA',
                 'created_at' => $item['createdAt'] ? Carbon::parse($item['createdAt']) : null,

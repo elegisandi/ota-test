@@ -20,7 +20,7 @@ export default function SearchLayout({ children, showSearchFilter = true }: Sear
         <div className="flex min-h-screen flex-col bg-gray-100">
             <header className="w-full bg-white shadow-sm">
                 <div className="mx-auto flex max-w-5xl flex-wrap items-center justify-between gap-4 border-b border-gray-100 px-6 py-6 sm:flex-nowrap">
-                    <h1 className="text-xl font-bold whitespace-nowrap text-gray-700">{appName}</h1>
+                    <span className="text-xl font-bold whitespace-nowrap text-gray-700">{appName}</span>
                     {showSearchFilter && (
                         <Input
                             type="text"
